@@ -11,13 +11,16 @@ exports.saveAUser = async (req, res) => {
   //   const parsedBody = res.body;
   //   console.log(req.body, "req.body.name");
   //   console.log(req.body.name, "req.body.name");
-  //   console.log(req.body.sectors, "req.body.name");
+  console.log("save a user method calls");
+  console.log(req.body.sectors, "req.body.sectors");
+  console.log(req.body.sectorName, " req.body.sectorName");
   //   console.log(req.body.agreeToTerms, "req.body.name");
   try {
     const user = await postUserService(
       req.body.name,
+      req.body.agreeToTerms,
       req.body.sectors,
-      req.body.agreeToTerms
+      req.body.sectorName
     );
     res.status(200).json({ status: "Saved", user });
   } catch (error) {
@@ -39,7 +42,8 @@ exports.updateAUser = async (req, res) => {
       id,
       req.body.name,
       req.body.sectors,
-      req.body.agreeToTerms
+      req.body.agreeToTerms,
+      req.body.sectorName
     );
     res.status(200).json({ status: "updated ", users });
   } catch (error) {

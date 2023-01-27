@@ -7,7 +7,11 @@ const userSchema = new Schema({
     type: String,
     require: true,
   },
-  sectors: { text: String, nodeIds: [String] },
+  sectorName: {
+    type: String,
+    require: false,
+  },
+  sectors: [String],
   agreeToTerms: {
     type: Boolean,
     require: true,
