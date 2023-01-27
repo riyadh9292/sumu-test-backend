@@ -1,11 +1,14 @@
 const express = require("express");
 const dotenv = require("dotenv").config();
+const bodyParser = require("body-parser");
+
 const app = express();
 const cors = require("cors");
 const { default: mongoose } = require("mongoose");
-
+const userRoutes = require("./routes/user.routes");
+app.use(bodyParser.json());
 app.use(cors());
-// app.use("/api/user", usersRoutes);
+app.use("/", userRoutes);
 
 app.get("/get-sectors", (req, res) => {
   // res.send("yellow");
